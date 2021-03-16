@@ -1,0 +1,8 @@
+## Interface: 90005
+## Title: |cff1784d1ElvUI|r |cff9482c9Miralos|r
+## Author: Miralos
+## Version: @project-version@
+## Notes: Plugin-edit for |cff1784d1ElvUI|r adding additional features.
+## RequiredDeps: ElvUI
+
+core.lua
