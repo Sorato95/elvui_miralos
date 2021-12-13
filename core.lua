@@ -2,6 +2,7 @@ local E, L, V, P, G = unpack(ElvUI); --Import: Engine, Locales, PrivateDB, Profi
 local ElvUI_Miralos = E:NewModule('ElvUI_Miralos', 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0'); --Create a plugin within ElvUI and adopt AceHook-3.0, AceEvent-3.0 and AceTimer-3.0. We can make use of these later.
 local EP = LibStub("LibElvUIPlugin-1.0") --We can use this to automatically insert our GUI tables when ElvUI_Config is loaded.
 local UF = E:GetModule('UnitFrames')
+local LSM = E.Libs.LSM
 local addonName, addonTable = ... --See http://www.wowinterface.com/forums/showthread.php?t=51502&p=304704&postcount=2
 
 function ElvUI_Miralos:Update()
@@ -40,7 +41,9 @@ function FrameGlow_UpdateSingleFrame(frame)
 			frame.TargetGlow:SetFrameStrata("BACKGROUND")
 		end
 		
-		frame.TargetGlow:SetBackdrop({edgeFile = E.TexturePath .. 'GlowTex', edgeSize = E.db.unitframe.colors.frameGlow.targetGlow.size})
+		--local dbTexture = LSM:Fetch('statusbar', E.db.unitframe.colors.frameGlow.mouseoverGlow.texture)
+		--frame.FrameGlow.texture:SetTexture(dbTexture)
+		frame.TargetGlow:SetBackdrop({edgeFile = E.Media.Textures.GlowTex, edgeSize = E.db.unitframe.colors.frameGlow.targetGlow.size})
 		UF:FrameGlow_SetGlowColor(frame.TargetGlow, frame.unit, 'targetGlow')
 	end
 end
@@ -77,8 +80,8 @@ function ElvUI_Miralos:InsertOptions()
 	}
 
 
-	E.Options.args.unitframe.args.generalOptionsGroup.args.frameGlowGroup.args.targetGlow.args["size"] = SizeOption
-	E.Options.args.unitframe.args.generalOptionsGroup.args.frameGlowGroup.args.targetGlow.args["foreground"] = ForeGroundOption
+	E.Options.args.unitframe.args.frameGlowGroup.args.targetGlow.args["size"] = SizeOption
+	E.Options.args.unitframe.args.frameGlowGroup.args.targetGlow.args["foreground"] = ForeGroundOption
 end
 
 function ElvUI_Miralos:Initialize()
