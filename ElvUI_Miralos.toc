@@ -1,4 +1,4 @@
-## Interface: 90005
+## Interface: 90105
 ## Title: |cff1784d1ElvUI|r |cff9482c9Miralos|r
 ## Author: Miralos
 ## Version: @project-version@
